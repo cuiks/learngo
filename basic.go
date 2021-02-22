@@ -62,6 +62,55 @@ func triangle() {
 	fmt.Println(c)
 }
 
+func consts() {
+	// 定义常量 go的常量不会全部大写。
+	// const数值可作为各种类型使用
+
+	//const filename = "abc.txt"
+	//const a, b = 3, 4
+	const (
+		filename = "abc.txt"
+		a, b     = 3, 4
+	)
+	var c int
+	c = int(math.Sqrt(a*a + b*b))
+	fmt.Println(filename, c)
+}
+
+func enums() {
+	// 枚举类型
+	//const (
+	//	cpp    = 0
+	//	java   = 1
+	//	python = 2
+	//	golang = 3
+	//)
+	//const (
+	//	cpp = iota
+	//	java
+	//	python
+	//	golang
+	//)
+	const (
+		cpp = iota
+		_
+		python
+		golang
+		JavaScript
+	)
+	const (
+		b = 1 << (10 * iota)
+		kb
+		mb
+		gb
+		tb
+		pb
+	)
+	fmt.Println(cpp, JavaScript, python, golang)
+	fmt.Println(b, kb, mb, gb, tb, pb)
+
+}
+
 func main() {
 	fmt.Println("Hello World")
 	variableZeroValue()
@@ -71,4 +120,6 @@ func main() {
 	fmt.Println(aa, ss, bb)
 	euler()
 	triangle()
+	consts()
+	enums()
 }
