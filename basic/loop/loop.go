@@ -3,8 +3,10 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func convertRoBin(n int) string {
@@ -24,7 +26,12 @@ func printFile(filename string) {
 	if err != nil {
 		panic(err)
 	}
-	scanner := bufio.NewScanner(file)
+
+	printFileContents(file)
+}
+
+func printFileContents(reader io.Reader) {
+	scanner := bufio.NewScanner(reader)
 
 	for scanner.Scan() {
 		fmt.Println(scanner.Text())
@@ -43,6 +50,12 @@ func main() {
 		convertRoBin(13), // 1101
 		convertRoBin(0),
 	)
-	printFile("abc.txt")
-	forever()
+	printFile("basic/branch/abc.txt")
+	s := `asd""asd
+	sd\n
+	
+	asdasd`
+	printFileContents(strings.NewReader(s))
+
+	//forever()
 }
