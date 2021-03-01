@@ -5,15 +5,8 @@ import (
 	"fmt"
 	"io"
 	"strings"
+	"learngo/functional/fib"
 )
-
-func fibonacci() intGen {
-	a, b := 0, 1
-	return func() int {
-		a, b = b, a+b
-		return a
-	}
-}
 
 type intGen func() int
 
@@ -37,7 +30,7 @@ func printFileContents(reader io.Reader) {
 }
 
 func main() {
-	f := fibonacci()
+	var f intGen = fib.Fibonacci()
 	//fmt.Println(f()) // 1
 	//fmt.Println(f()) // 1
 	//fmt.Println(f()) // 2

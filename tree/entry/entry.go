@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"learngo/tree"
+
 	"golang.org/x/tools/container/intsets"
+	"learngo/tree"
 )
 
 // 通过组合的方式实现扩展方法
@@ -25,6 +26,13 @@ func (myNode *myTreeNode) postOrder() {
 
 func testSparse() {
 	s := intsets.Sparse{}
+
+	s.Insert(1)
+	s.Insert(1000)
+	s.Insert(1000000)
+
+	fmt.Println(s.Has(1000))
+	fmt.Println(s.Has(100000))
 }
 
 func main() {
@@ -69,4 +77,13 @@ func main() {
 	//	{6, nil, &root},
 	//}
 	//fmt.Println(nodes)
+
+	testSparse()
+
+	fmt.Println("####")
+	nodeCount := 0
+	root.TraverseFunc(func(node *tree.Node) {
+		nodeCount++
+	})
+	fmt.Println("Node Count: ", nodeCount)
 }
