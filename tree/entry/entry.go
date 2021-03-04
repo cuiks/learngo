@@ -45,31 +45,31 @@ func main() {
 	root.Left.Right = tree.CreateNode(2)
 
 	root.Right.Left.SetValue(4)
-	root.Right.Left.Print()
+	//root.Right.Left.Print()
 
-	fmt.Println("root: ")
-	root.Print()
-	root.SetValue(100)
-	root.Print()
-
-	fmt.Println("pRoot: ")
-	pRoot := &root
-	pRoot.Print()
-	pRoot.SetValue(200)
-	pRoot.Print()
-
-	var nRoot *tree.Node
-	nRoot.SetValue(200)
-	nRoot = &root
-	nRoot.SetValue(300)
-	nRoot.Print()
-
+	//fmt.Println("root: ")
+	//root.Print()
+	//root.SetValue(100)
+	//root.Print()
+	//
+	//fmt.Println("pRoot: ")
+	//pRoot := &root
+	//pRoot.Print()
+	//pRoot.SetValue(200)
+	//pRoot.Print()
+	//
+	//var nRoot *tree.Node
+	//nRoot.SetValue(200)
+	//nRoot = &root
+	//nRoot.SetValue(300)
+	//nRoot.Print()
+	//
 	root.Traverse()
-
-	fmt.Println("###")
-	myNode := myTreeNode{&root}
-	myNode.postOrder()
-	fmt.Println("###")
+	//
+	//fmt.Println("###")
+	//myNode := myTreeNode{&root}
+	//myNode.postOrder()
+	//fmt.Println("###")
 
 	//nodes := []tree.TreeNode{
 	//	{Value: 3},
@@ -78,12 +78,21 @@ func main() {
 	//}
 	//fmt.Println(nodes)
 
-	testSparse()
+	//testSparse()
 
-	fmt.Println("####")
+	//fmt.Println("####")
 	nodeCount := 0
 	root.TraverseFunc(func(node *tree.Node) {
 		nodeCount++
 	})
 	fmt.Println("Node Count: ", nodeCount)
+
+	c := root.TraverseWithChannel()
+	maxNode := 0
+	for node := range c {
+		if node.Value > maxNode {
+			maxNode = node.Value
+		}
+	}
+	fmt.Println("Max node value:", maxNode)
 }
