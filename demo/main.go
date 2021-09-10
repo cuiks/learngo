@@ -1,28 +1,17 @@
 package main
 
-import (
-	"fmt"
-	"io/ioutil"
-	"net/http"
-)
+import "fmt"
+
+func cal(n int) int {
+	k := 0
+	for n >= 3 {
+		k++
+		n -= 2
+		fmt.Println(n, k)
+	}
+	return k
+}
 
 func main() {
-	const url = "http://www.zhenai.com/zhenghun"
-	response, err := http.Get(url)
-	if err != nil {
-		panic(err)
-	}
-	defer response.Body.Close()
-
-	if response.StatusCode != http.StatusOK {
-		fmt.Println("status code error:", response.StatusCode)
-		return
-	}
-
-	all, err := ioutil.ReadAll(response.Body)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("%s/n", all)
-
+	fmt.Println(cal(10))
 }
